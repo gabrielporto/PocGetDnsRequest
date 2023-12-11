@@ -10,9 +10,27 @@ namespace PocGetDnsRequest.Controllers
     {
         // GET: api/<HomeController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public GetResponse Get()
         {
-            return new string[] { Newtonsoft.Json.JsonConvert.SerializeObject(Request.Host) };
+
+            return new GetResponse()
+            {
+                MachineName = Environment.MachineName,
+                OSVersion = Environment.OSVersion,
+                RequestHost = Request.Host,
+                WorkingSet = Environment.WorkingSet,
+                ProcessorCount = Environment.ProcessorCount,
+            };
         }
     }
+
+    public class GetResponse
+    {
+        public HostString? RequestHost { get; set; }
+        public string? MachineName { get; set; }
+        public OperatingSystem? OSVersion { get; set; }
+        public long WorkingSet { get; set; }
+        public int ProcessorCount { get; set; }
+    }
+
 }
