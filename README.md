@@ -7,3 +7,5 @@
  docker push gabriellopes/dnsrequest:latest
  
  docker run --name dns -p 80:80 -d gabriellopes/dnsrequest:latest
+
+.
